@@ -1,0 +1,27 @@
+{
+  "manifest_version": 3,
+  "name": "Test",
+  "description": "build test",
+  "version": "1",
+
+  "background": {
+    "service_worker": "background.bundle.js"
+  },
+  "action": {
+    "default_popup": "/popup.html",
+    "default_icon": "/broccoli.png",
+    "default_title": "Click Me!"
+  },
+  "icons": {
+    "16": "/broccoli.png",
+    "32": "/broccoli.png"
+  },
+  "permissions": ["storage", "activeTab", "scripting"],
+  "content_scripts": [
+    {
+      "matches": ["https://*/*"],
+      "run_at": "document_end",
+      "js": ["background.bundle.js"]
+    }
+  ]
+}
