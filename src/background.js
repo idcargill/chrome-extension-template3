@@ -1,11 +1,16 @@
-import 'bootstrap/dist/css/bootstrap.min.css';
-
 // Main Service Worker
-const color = '#3aa757';
 
-console.log('Hello from webpack');
+setTimeout(() => {
+  console.log('Hello from the Background Script!');
+}, 2000);
 
-chrome.runtime.onInstalled.addListener(() => {
-  chrome.storage.sync.set({ color });
-  console.log('Default background color set to %cgreen', `color: ${color}`);
+chrome.runtime.onMessage.addListener((req) => {
+  let incoming = req.text;
+  console.log(incoming);
+
+  chrome.tabs.query({ active: true }, (tab) => {
+    let activeTabId = tab[0].id;
+    let message = { text: incoming };
+    chrome.tabs.sendMessage(activeTabId, 'hello form the background');
+  });
 });

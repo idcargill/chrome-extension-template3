@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
-  "name": "Test",
-  "description": "build test",
+  "name": "Chrome Extension 3",
+  "description": "Template with React",
   "version": "1",
 
   "background": {
@@ -21,7 +21,7 @@
     {
       "matches": ["https://*/*"],
       "run_at": "document_end",
-      "js": ["background.bundle.js"]
+      "js": ["content.bundle.js"]
     }
   ]
 }
